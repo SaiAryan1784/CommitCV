@@ -24,7 +24,7 @@ export const fetchAll = async (req, res) => {
         const gitRes = await octokit.request('GET /users/{username}/repos', {
             username: `${username}`,
             type: "all", // fetch all repos by default only owned by user
-            per_page: 10, // set to 10 for now for development
+            per_page: 100, // set to 10 for now for development
             headers: {
             'X-GitHub-Api-Version': '2022-11-28'
             }
