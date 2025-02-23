@@ -1,27 +1,31 @@
 import { useState } from "react";
+import axios from "axios";
 
 const LandingPage = () => {
   const [githubId, setGithubId] = useState("");
   const [jobType, setJobType] = useState("");
-  const [projects, setProjects] = useState([]);
+  const [responseText, setResponseText] = useState("");
 
-  const handleGenerateResume = () => {
+  const handleGenerateResume = async () => {
     if (!githubId.trim()) {
       alert("Please enter your GitHub username.");
       return;
     }
     if (!jobType.trim()) {
-      alert("Please enter the job type.");
+      alert("Please enter the job Description.");
       return;
     }
-    console.log("Generating resume for:", githubId, "Job Type:", jobType);
     
-    // Simulating a response for now
-    const mockProjects = [
-      { name: "Awesome Repo", topics: ["React", "Tailwind"], lastActivity: "2 days ago", link: "https://github.com/example/awesome-repo" },
-      { name: "AI Project", topics: ["Machine Learning", "NLP"], lastActivity: "5 days ago", link: "https://github.com/example/ai-project" }
-    ];
-    setProjects(mockProjects);
+    try {
+      const res = await axios.get("http://localhost:5555/api/git/fetchAll", {
+        params: { username: githubId, jobDescription: jobType },
+      });
+      
+      setResponseText(res.data); // Assuming backend returns only text
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setResponseText("Error fetching data. Please try again.");
+    }
   };
 
   return (
@@ -38,7 +42,7 @@ const LandingPage = () => {
         />
         <input
           type="text"
-          placeholder="Enter job type"
+          placeholder="Enter job Description"
           value={jobType}
           onChange={(e) => setJobType(e.target.value)}
           className="w-full p-2 border border-white bg-black text-white mb-4"
@@ -51,25 +55,15 @@ const LandingPage = () => {
         </button>
       </div>
 
-      {/* Projects Section */}
-      <div className="w-full max-w-md mt-6">
-        {projects.length > 0 && (
-          <div className="border-2 border-white p-4">
-            <h3 className="text-xl font-bold mb-4">Relevant Projects</h3>
-            {projects.map((project, index) => (
-              <div key={index} className="mb-4 border-b border-gray-500 pb-2">
-                <h4 className="text-lg font-semibold">{project.name}</h4>
-                <p className="text-sm">Topics: {project.topics.join(", ")}</p>
-                <p className="text-sm">Last Activity: {project.lastActivity}</p>
-                <a href={project.link} className="text-blue-400" target="_blank" rel="noopener noreferrer">Repo Link</a>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      {/* Response Section */}
+      {responseText && (
+        <div className="w-full max-w-md mt-6 border-2 border-white p-4">
+          <h3 className="text-xl font-bold mb-4">AI Response</h3>
+          <p className="text-sm">{responseText}</p>
+        </div>
+      )}
     </div>
   );
 };
 
 export default LandingPage;
-  
