@@ -20,8 +20,8 @@ const LandingPage = () => {
       const res = await axios.get("http://localhost:5555/api/git/fetchAll", {
         params: { username: githubId, jobDescription: jobType },
       });
-      
-      setResponseText(res.data); // Assuming backend returns only text
+      console.log(res);
+      setResponseText(res.data.candidates[0].content.parts[0].text); // Assuming backend returns only text
     } catch (error) {
       console.error("Error fetching data:", error);
       setResponseText("Error fetching data. Please try again.");
