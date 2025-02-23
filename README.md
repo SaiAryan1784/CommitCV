@@ -20,31 +20,31 @@ Setup
 
     Clone the repository:
 
-git clone https://github.com/SaiAryan1784/CommitCV.git  
-cd CommitCV  
+    git clone https://github.com/SaiAryan1784/CommitCV.git  
+    cd CommitCV  
 
 Install dependencies:
 
-    Backend
+- Backend
+    
+        cd backend  
+        npm i  
+        npm run dev  
 
-cd backend  
-npm i  
-npm run dev  
+- Frontend
 
-Frontend
+        cd project  
+        npm i  
+        npm run dev  
 
-    cd project  
-    npm i  
-    npm run dev  
+- Set up environment variables:
 
-Set up environment variables:
-
-    Create a .env file in the backend folder and add:
-
-        git_PAT = "your_github_personal_access_token"
-        api_key = "your_google_gemini_api_key"
-
-    Access the frontend at http://localhost:3000/.
+        Create a .env file in the backend folder and add:
+    
+            git_PAT = "your_github_personal_access_token"
+            api_key = "your_google_gemini_api_key"
+    
+        Access the frontend at http://localhost:5173/.
 
 Current Limitations
 
