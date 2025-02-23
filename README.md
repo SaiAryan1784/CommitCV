@@ -19,7 +19,7 @@ How It Works
 
 Tech Stack
 
-    Frontend: React (Next.js)
+    Frontend: React.js
     Backend: Express.js (Node.js)
     Database (if needed): MongoDB
     AI Component: Local LLM (e.g., Llama, GPT4All, Mistral)
