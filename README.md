@@ -1,33 +1,66 @@
 # CommitCV: AI-Powered GitHub Project Ranking for Job Applications
 Overview
 
-CommitCV is an intelligent tool that analyzes job descriptions and ranks your GitHub repositories based on relevance. By leveraging the GitHub API and a locally hosted Large Language Model (LLM), CommitCV helps developers identify which of their projects best match specific job requirements.
+CommitCV analyzes job descriptions and ranks your GitHub repositories based on relevance. It fetches repository details using the GitHub API and processes them using AI to help developers identify the most relevant projects for job applications.
 Key Features
 
-    GitHub Integration: Fetches repository details, including README files, programming languages, and assigned topics using the GitHub API.
-    Local LLM Processing: Uses an offline LLM to analyze job descriptions and extract key skills and requirements.
-    Project Ranking: Automatically scores and ranks repositories based on their relevance to a given job description.
-    Tech Stack Analysis: Identifies technologies used in each project to improve ranking accuracy.
-    Privacy-Focused: Runs the AI model locally, ensuring data security and eliminating reliance on external AI services.
+    GitHub Integration: Fetches repository details, including README files, programming languages, and topics using a GitHub personal access token.
+    Project Ranking: Scores repositories based on alignment with job descriptions using AI.
+    Tech Stack Analysis: Extracts technologies from each repository for relevance assessment.
+    Google Gemini API: Processes job descriptions to extract key skills and match them with project details.
 
-How It Works
+Installation & Usage
+Prerequisites
 
-    Authenticate with GitHub using a personal access token to fetch repository data.
-    Input a job description, which the LLM processes to extract key requirements.
-    Analyze repositories using README content, programming languages, and topics.
-    Rank projects based on their alignment with the job description.
+    Node.js & npm
+    GitHub personal access token
+    Google Gemini API key
+
+Setup
+
+    Clone the repository:
+
+git clone https://github.com/SaiAryan1784/CommitCV.git  
+cd CommitCV  
+
+Install dependencies:
+
+    Backend
+
+cd backend  
+npm i  
+npm run dev  
+
+Frontend
+
+    cd project  
+    npm i  
+    npm run dev  
+
+Set up environment variables:
+
+    Create a .env file in the backend folder and add:
+
+        git_PAT = "your_github_personal_access_token"
+        api_key = "your_google_gemini_api_key"
+
+    Access the frontend at http://localhost:3000/.
+
+Current Limitations
+
+    GitHub authentication is via a personal access token (OAuth not implemented yet).
+    Basic ranking logic using AI, improvements needed for better accuracy.
+    Resume generation is not implemented yet.
 
 Tech Stack
 
     Frontend: React.js
-    Backend: Express.js (Node.js)
-    Database (if needed): MongoDB
-    AI Component: Local LLM (e.g., Llama, GPT4All, Mistral)
-    Authentication: GitHub Personal Access Token
+    Backend: Node.js (Express.js)
+    AI: Google Gemini API
+    Database: Not required yet
 
-Future Enhancements
+Next Steps
 
-    Implement OAuth for seamless GitHub authentication and better rate limit handling.
-    Improve ranking algorithms using embeddings and advanced NLP techniques.
+    Improve ranking using embeddings and advanced NLP techniques.
+    Implement OAuth for seamless GitHub authentication.
     Add resume generation based on ranked projects.
-    Export ranked project lists in various formats (PDF, JSON, etc.).
