@@ -10,11 +10,11 @@ const router = express.Router();
 // Route to handle adding medical report records with optional file upload
 export const fetchAll = async (req, res) => {
     try {
-        if (!req.body.username) {
+        if (!req.query.username) {
             return res.status(400).send({ message: `Please send username` });
         }
 
-        const { username,jobDescription } = req.body;
+        const { username,jobDescription } = req.query;
 
         const octokit = new Octokit({
             auth: git_PAT
