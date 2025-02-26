@@ -1,7 +1,12 @@
 # CommitCV: AI-Powered GitHub Project Ranking for Job Applications
+## 📺 Live Demo  
+[![Watch the Demo](https://img.youtube.com/vi/brghI0f89-s/0.jpg)](https://www.youtube.com/watch?v=brghI0f89-s)  
+
+
 Overview
 
 CommitCV analyzes job descriptions and ranks your GitHub repositories based on relevance. It fetches repository details using the GitHub API and processes them using AI to help developers identify the most relevant projects for job applications.
+
 Key Features
 
     GitHub Integration: Fetches repository details, including README files, programming languages, and topics using a GitHub personal access token.
